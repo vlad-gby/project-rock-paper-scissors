@@ -16,28 +16,24 @@ function playRound(){
 
   // CHECK IF INPUT IS VALID-----------
   // x controls the loop 
-  // a checks what to display in the prompt
-  for(let x = 0, a = 0; x != 1;){
-    switch (a){
+  // pr checks what to display in the prompt
+  for(let x = 0, pr = 0; x != 1;){
+    switch (pr){
       case 0:
-        playerSelection = prompt('Enter Rock, Paper or Scissors', '') || 'close';
+        playerSelection = prompt('Enter Rock, Paper or Scissors') || 'close';
       break;
       case 1:
-        playerSelection = prompt('May be you got a typo.\nPlease, enter Rock, Paper or Scissors', '') || 'close';
-      break;
-      case -1:
-        playerSelection = prompt('You didn\'t enter anything.\nPlease, enter Rock, Paper or Scissors', '') || 'close';
+        playerSelection = prompt('May be you got a typo.\nPlease, enter Rock, Paper or Scissors') || 'close';
       break;
     }
     if (playerSelection == 'close')return;
     playerSelection = playerSelection.toLowerCase();
 
-    if (playerSelection == '') {a = -1; continue;}
     switch (playerSelection){
       case 'rock': x = 1; break;
       case 'paper': x = 1; break;
       case 'scissors': x = 1; break;
-      default: a = 1;
+      default: pr = 1;
     }
   }
   
@@ -47,7 +43,7 @@ function playRound(){
 
   // WHO WINS?-------------------------
   if (playerSelection === computerSelection){
-    return ('It\'s a tie!')
+    return (`It\'s a tie! I also have a ${computerSelectionCaps}`)
   }else if (playerSelection == 'rock' && computerSelection == 'paper'){
     return (`You lose! ${computerSelectionCaps} beats ${playerSelectionCaps}`)
   }else if (playerSelection == 'rock' && computerSelection == 'scissors'){
