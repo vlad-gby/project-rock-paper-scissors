@@ -60,37 +60,53 @@ function playRound(){
 
 }
 
+const choice = document.querySelectorAll('.choice');
+choice.forEach((item) => {
+  item.style.outlineOffset = '2px'
+  // item.style.border = "4px solid rgb(0,0,0,0)";
+    
+});
+choice.forEach((item) => {
+  item.addEventListener('mouseover', e => {
+    item.style.outline = '4px solid rgb(146, 121, 92)';
+  });
+  item.addEventListener('mouseout', e => {
+    item.style.outline = '0px solid';
+  });
+
+});
+
 
 // GAME OF 5 ROUNDS--------------------
-function playGame(){
-  let w = 0;
-  let l = 0;
+// function playGame(){
+//   let w = 0;
+//   let l = 0;
   
-  for (i = 0; i < 5;){
-    let result = playRound();
+//   for (i = 0; i < 5;){
+//     let result = playRound();
 
-    if(result === undefined) return;
+//     if(result === undefined) return;
     
-    if (result.at(4) == 'l') l++;
-    if (result.at(4) == 'w') w++;
-    i++
-  }
+//     if (result.at(4) == 'l') l++;
+//     if (result.at(4) == 'w') w++;
+//     i++
+//   }
 
 
-  let winpl = w == 1 ? 'win' : 'wins'
-  let loosepl = l == 1 ? 'loose' : 'looses'
-  let tiepl = 5 - (w+l) == 1 ? 'tie' : 'ties' 
+//   let winpl = w == 1 ? 'win' : 'wins'
+//   let loosepl = l == 1 ? 'loose' : 'looses'
+//   let tiepl = 5 - (w+l) == 1 ? 'tie' : 'ties' 
 
 
-  if (w > l){
-    return (`\n ${w} ${winpl} VS ${l} ${loosepl}, and ${5 - (w+l)} ${tiepl}. You WON!`)
-  }else if(w < l){
-    return (`\n ${w} ${winpl} VS ${l} ${loosepl}, and ${5 - (w+l)} ${tiepl}. You lost!`)
-  } else if(w == l){
-    return (`\n ${w} ${winpl} VS ${l} ${loosepl}, and ${5 - (w+l)} ${tiepl}. It\'s a TIE!`)
-  }
+//   if (w > l){
+//     return (`\n ${w} ${winpl} VS ${l} ${loosepl}, and ${5 - (w+l)} ${tiepl}. You WON!`)
+//   }else if(w < l){
+//     return (`\n ${w} ${winpl} VS ${l} ${loosepl}, and ${5 - (w+l)} ${tiepl}. You lost!`)
+//   } else if(w == l){
+//     return (`\n ${w} ${winpl} VS ${l} ${loosepl}, and ${5 - (w+l)} ${tiepl}. It\'s a TIE!`)
+//   }
 
-}
+// }
 
 
 

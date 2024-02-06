@@ -5,6 +5,35 @@
 body{
   text-align: center;
   font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  background-color: rgb(218, 194, 165);
+}
+
+p{
+  font-size: 24px;
+}
+
+.player-box{
+  margin-bottom: 48px;
+}
+
+.choice-box{
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.choice{
+  height: 200px;
+  width: 240px;
+  border-radius: 32px;
+}
+.rock{
+  background-image: url(img/rock.jpg);
+}
+.paper{
+  background-image: url(img/paper.jpg);
+}
+.scissors{
+  background-image: url(img/scissors.jpg);
 }
 
 button{

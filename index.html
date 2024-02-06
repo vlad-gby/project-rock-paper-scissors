@@ -8,13 +8,21 @@
   <title>Rock-Paper-Scissors game</title>
 </head>
 
-  <h1>Create a paragraph</h1>
-
 <h1>This is a Rock-Paper-Scissors game</h1>
-<h2>To play it you should open the console first (CTRL/CMD + J)</h2>
+<h2>Make your decision wisely</h2>
 
-<button onclick="console.log(playRound() || 'You decided to close the round')">Play Round!</button>
-<button onclick="console.log(playGame() || 'You decided to close the game')">Play Game!</button>
+<div class="player-box">
+  <p>Your choice:</p>
+  <div class="choice-box">
+    <div class="choice rock"></div>
+    <div class="choice paper"></div>
+    <div class="choice scissors"></div>
+  </div>
+</div>
+<div class="computer-box">
+  <p>Computers' choice:</p>
+</div>
+
 
 
 <body>
