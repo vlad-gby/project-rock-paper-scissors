@@ -10,57 +10,32 @@ function getComputerChoice(){
 }
 
 
-function playRound(){
+function playRound(playerSelection){
   const computerSelection = getComputerChoice();
-  let playerSelection;
-
-  // CHECK IF INPUT IS VALID-----------
-  // x controls the loop 
-  // pr checks what to display in the prompt
-  for(let x = 0, pr = 0; x != 1;){
-    switch (pr){
-      case 0:
-        playerSelection = prompt('Enter Rock, Paper or Scissors') || 'close';
-      break;
-      case 1:
-        playerSelection = prompt('May be you got a typo.\nPlease, enter Rock, Paper or Scissors') || 'close';
-      break;
-    }
-    if (playerSelection == 'close')return;
-    playerSelection = playerSelection.toLowerCase();
-
-    switch (playerSelection){
-      case 'rock': x = 1; break;
-      case 'paper': x = 1; break;
-      case 'scissors': x = 1; break;
-      default: pr = 1;
-    }
-  }
-  
 
   const playerSelectionCaps = playerSelection.at(0).toUpperCase() + playerSelection.slice(1);
   const computerSelectionCaps = computerSelection.at(0).toUpperCase() + computerSelection.slice(1);
 
   // WHO WINS?-------------------------
   if (playerSelection === computerSelection){
-    return (`It\'s a tie! I also have a ${computerSelectionCaps}`)
+    return [computerSelection,0]
   }else if (playerSelection == 'rock' && computerSelection == 'paper'){
-    return (`You lose! ${computerSelectionCaps} beats ${playerSelectionCaps}`)
+    return [computerSelection,-1];
   }else if (playerSelection == 'rock' && computerSelection == 'scissors'){
-    return (`You win! ${playerSelectionCaps} beats ${computerSelectionCaps}`)
+    return [computerSelection,1];
   }else if (playerSelection == 'paper' && computerSelection == 'rock'){
-    return (`You win! ${playerSelectionCaps} beats ${computerSelectionCaps}`)
+    return [computerSelection,1];
   }else if (playerSelection == 'paper' && computerSelection == 'scissors'){
-    return (`You lose! ${computerSelectionCaps} beats ${playerSelectionCaps}`)
+    return [computerSelection,-1];
   }else if (playerSelection == 'scissors' && computerSelection == 'rock'){
-    return (`You lose! ${computerSelectionCaps} beats ${playerSelectionCaps}`)
+    return [computerSelection,-1];
   }else if (playerSelection == 'scissors' && computerSelection == 'paper'){
-    return (`You win! ${playerSelectionCaps} beats ${computerSelectionCaps}`)
+    return [computerSelection,1];
   }
 
 }
 
-const choice = document.querySelectorAll('.choice');
+const choice = document.querySelectorAll('.choice-box .choice');
 choice.forEach((item) => {
   item.style.outlineOffset = '2px'
   // item.style.border = "4px solid rgb(0,0,0,0)";
@@ -73,7 +48,36 @@ choice.forEach((item) => {
   item.addEventListener('mouseout', e => {
     item.style.outline = '0px solid';
   });
+  item.addEventListener('click', e => {
+    const result = playRound(e.target.classList[1]);
+    const output = document.querySelector('.computer-box .choice');
+    const background = document.querySelector('body');
+    
+    if(output.classList[1]){
+      switch (output.classList[1]){
+        case 'rock': output.classList.remove('rock');
+        break;
+        case 'paper': output.classList.remove('paper');
+        break;
+        case 'scissors': output.classList.remove('scissors');
+        break;
+      }
+    }
+    output.classList.add(result[0]);
 
+   
+    switch (result[1]){
+      case 1:
+         background.style.backgroundColor = 'rgb(193, 218, 165)';
+      break;
+      case -1:
+         background.style.backgroundColor = 'rgb(215, 164, 157)';
+      break;
+      case 0:
+         background.style.backgroundColor = 'rgb(235, 211, 113)';
+      break;
+    }
+  });
 });
 
 
